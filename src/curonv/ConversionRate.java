@@ -3,12 +3,20 @@ package curonv;
 import java.util.ArrayList;
 
 public class ConversionRate {
-    private ArrayList<Currency> conversionRate = new ArrayList<>();
+    private ArrayList<Index> rate = new ArrayList<>();
 
-    public void conversionRate() {
-            conversionRate.add(new Dollar(1));
-            conversionRate.add(new Euro(0.851051));
-            conversionRate.add(new Pound(0.775389));
-            conversionRate.add(new Yen(109.066));
+    public void rateInit() {
+        rate.add(new Index("USD", 1));
+        rate.add(new Index("EUR", 0.851453));
+        rate.add(new Index("GBP", 0.776578));
+        rate.add(new Index("YEN", 109.066));
+    }
+
+    public ArrayList<Index> getConversionRate() {
+        return rate;
+    }
+
+    public ConversionRate() {
+        rateInit();
     }
 }

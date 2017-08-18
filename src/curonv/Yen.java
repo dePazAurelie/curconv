@@ -2,8 +2,7 @@ package curonv;
 
 public class Yen extends Currency {
 
-    public Yen(double conversionRate) {
+    public Yen() {
         super("Yen", "¥", "YEN");
-        this.setConversionRate(conversionRate);
     }
 }

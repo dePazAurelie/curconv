@@ -2,8 +2,7 @@ package curonv;
 
 public class Dollar extends Currency{
 
-    public Dollar(double conversionRate) {
+    public Dollar() {
         super("Dollar", "$", "USD");
-        this.setConversionRate(conversionRate);
     }
 }

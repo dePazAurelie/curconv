@@ -1,8 +1,7 @@
 package curonv;
 
 public class Pound extends Currency{
-    public Pound(double conversionRate) {
+    public Pound() {
         super("Pound", "£", "GBP");
-        this.setConversionRate(conversionRate);
     }
 }
