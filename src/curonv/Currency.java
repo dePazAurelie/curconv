@@ -7,7 +7,7 @@ public class Currency {
     private double conversionRateUSD;
 
 
-    public Currency(String currencyCode) {
+    public Currency(String name, String symbol, String currencyCode) {
         this.name = name;
         this.symbol = symbol;
         this.currencyCode = currencyCode;
