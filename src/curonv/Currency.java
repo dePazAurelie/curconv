@@ -7,9 +7,10 @@ public class Currency {
     private double conversionRateUSD;
 
 
-    public Currency(String name, String symbol, String currencyCode) {
-        this.name = name;
-        this.symbol = symbol;
+    public Currency(String currencyCode) {
+    	
+    		this.name = CurrencyInfo.CurrencyName(currencyCode);
+        this.symbol = CurrencyInfo.CurrencySymbol(currencyCode);
         this.currencyCode = currencyCode;
     }
 

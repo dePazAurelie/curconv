@@ -20,12 +20,9 @@ public class ConversionRate {
             	
                 JSONObject file = (JSONObject) parser.parse(new FileReader("live.json"));
                 JSONObject quotes = (JSONObject) file.get("quotes");
-                Set<String> set = quotes.keySet();
 
-                currencyOrigin.setConversionRateUSD((double) quotes.get("USD" + currencyOrigin.getCurrencyCode()));
-                currencyTarget.setConversionRateUSD((double) quotes.get("USD" + currencyTarget.getCurrencyCode()));
-                  
-                //System.out.println("key: " + key + " // value: " + quotes.get(key));
+                currencyOrigin.setConversionRateUSD(Double.parseDouble(quotes.get("USD" + currencyOrigin.getCurrencyCode()).toString()));
+                currencyTarget.setConversionRateUSD(Double.parseDouble(quotes.get("USD" + currencyTarget.getCurrencyCode()).toString()));
 
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
