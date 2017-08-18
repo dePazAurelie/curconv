@@ -21,10 +21,9 @@ public class ConversionRate {
                 JSONObject file = (JSONObject) parser.parse(new FileReader("live.json"));
                 JSONObject quotes = (JSONObject) file.get("quotes");
                 Set<String> set = quotes.keySet();
-                
-                
-                currencyOrigin.setConversionRateUSD((Double) quotes.get(currencyOrigin.getCurrencyCode()));
-                currencyTarget.setConversionRateUSD((Double) quotes.get(currencyTarget.getCurrencyCode()));
+
+                currencyOrigin.setConversionRateUSD((double) quotes.get("USD" + currencyOrigin.getCurrencyCode()));
+                currencyTarget.setConversionRateUSD((double) quotes.get("USD" + currencyTarget.getCurrencyCode()));
                   
                 //System.out.println("key: " + key + " // value: " + quotes.get(key));
 

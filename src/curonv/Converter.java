@@ -37,8 +37,8 @@ public class Converter {
                 };
             case "GBP":
                 return new Currency("Pound", "£", "GBP");
-            case "YEN":
-                return new Currency("Yen", "¥", "YEN");
+            case "JPY":
+                return new Currency("Yen", "¥", "JPY");
             default:
                 return null;
         }
