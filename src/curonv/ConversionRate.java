@@ -12,6 +12,7 @@ import org.json.simple.parser.ParseException;
 
 public class ConversionRate {
 
+<<<<<<< HEAD
     public void changeConversionRate (Currency currencyOrigin, Currency currencyTarget) {
 
             JSONParser parser = new JSONParser();
@@ -40,19 +41,44 @@ public class ConversionRate {
 }
     	
     		/* switch (currency.getCurrencyCode()) {
+=======
+    public static void changeConversionRate (Currency currencyOrigin, Currency currencyTarget) {
+        // Valentin --> cette fonction reçoit deux objet Currency, ne renvoit rien (à voir) et set la valeur du taux de conversion des deux objets en fonction le la key.
+
+    		switch (currencyOrigin.getCurrencyCode()) {
+>>>>>>> branch 'beta' of https://github.com/vyrtualsynthese/curconv.git
             case "USD":
-                currency.setConversionRateUSD(1);
+                currencyOrigin.setConversionRateUSD(1);
                 break;
             case "EUR":
-                currency.setConversionRateUSD(0.850941);
+                currencyOrigin.setConversionRateUSD(0.850941);
                 break;
             case "GBP":
-                currency.setConversionRateUSD(0.776578);
+                currencyOrigin.setConversionRateUSD(0.776578);
                 break;
             case "YEN":
-                currency.setConversionRateUSD(108.713);
+                currencyOrigin.setConversionRateUSD(108.713);
                 break;
             default:
+<<<<<<< HEAD
+=======
+            }
+
+        switch (currencyTarget.getCurrencyCode()) {
+            case "USD":
+                currencyTarget.setConversionRateUSD(1);
+                break;
+            case "EUR":
+                currencyTarget.setConversionRateUSD(0.850941);
+                break;
+            case "GBP":
+                currencyTarget.setConversionRateUSD(0.776578);
+                break;
+            case "YEN":
+                currencyTarget.setConversionRateUSD(108.713);
+                break;
+            default:
+>>>>>>> branch 'beta' of https://github.com/vyrtualsynthese/curconv.git
         }
     }
 
