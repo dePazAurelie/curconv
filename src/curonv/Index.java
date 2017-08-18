@@ -10,7 +10,6 @@ public class Index {
         this.conversionRate = conversionRate;
     }
 
-    /*
     public String getCurrencyCode() {
         return currencyCode;
     }
@@ -26,7 +25,6 @@ public class Index {
     public void setConversionRate(double conversionRate) {
         this.conversionRate = conversionRate;
     }
-    */
 
     public Index() {
     }
