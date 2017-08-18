@@ -1,13 +1,12 @@
 package curonv;
-import java.util.ArrayList;
 
 public class Converter {
     private ConversionRate conversionRate = new ConversionRate();
-    private ArrayList<Index> tableConversion = conversionRate.getConversionRate();
 
     public void conversion(double nbOrigin, String strOrigin, String strTarget) {
         Currency currencyOrigin = makeCurrency(strOrigin);
         Currency currencyTarget = makeCurrency(strTarget);
+
 
 
 
@@ -16,13 +15,15 @@ public class Converter {
     public Currency makeCurrency(String str) {
         switch (str) {
             case "USD":
-                return new Dollar();
+                return new Currency("Dollar", "$", "USD") {
+                };
             case "EUR":
-                return new Euro();
+                return new Currency("Euro", "€", "EUR") {
+                };
             case "GBP":
-                return new Pound();
+                return new Currency("Pound", "£", "GBP");
             case "YEN":
-                return new Yen();
+                return new Currency("Yen", "¥", "YEN");
             default:
                 return null;
         }

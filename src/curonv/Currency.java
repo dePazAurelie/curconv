@@ -1,9 +1,10 @@
 package curonv;
 
-public abstract class Currency {
+public class Currency {
     private String name;
     private String symbol;
     private String currencyCode;
+    private double conversionRateUSD;
 
 
     public Currency(String name, String symbol, String currencyCode) {
@@ -22,5 +23,13 @@ public abstract class Currency {
 
     public String getCurrencyCode() {
         return currencyCode;
+    }
+
+    public double getConversionRateUSD() {
+        return conversionRateUSD;
+    }
+
+    protected void setConversionRateUSD(double conversionRateUSD) {
+        this.conversionRateUSD = conversionRateUSD;
     }
 }

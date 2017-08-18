@@ -1,4 +1,4 @@
-package curonv;
+package curonv.test;
 
 public class Index {
 
