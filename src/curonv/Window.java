@@ -34,7 +34,6 @@ public class Window extends JFrame {
 		converterTitle.setHorizontalAlignment(SwingConstants.CENTER);
 		contentPane.add(converterTitle, "cell 1 0 6 1,alignx center,aligny center");
 		
-		
 		JLabel converterSubTitle = new JLabel("Enter a value and pick an origin currency and a target currency.");
 		converterSubTitle.setFont(new Font("Calibri", Font.ITALIC, 25));
 		converterSubTitle.setHorizontalAlignment(SwingConstants.CENTER);
