@@ -10,7 +10,6 @@ public class Converter {
         double nbDollar;
         double nbResult;
         double nbOrigin = Double.parseDouble(strOriginValue);
-        String strResult = "";
         
         if (strOrigin.equals("Currency") || strTarget.equals("Currency")) {
         	return "Please select two currencies !";
@@ -25,8 +24,7 @@ public class Converter {
         	
         	nbResult = round(nbResult);
         	
-        	strResult += nbResult;
-        	return strResult;
+        	return String.format ("%.2f", nbResult);
         }
     }
 
