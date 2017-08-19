@@ -52,16 +52,16 @@ public class CurrencyInfo {
 		JSONParser parser = new JSONParser();
 
         try {
-        	JSONObject file = (JSONObject) parser.parse(new FileReader("money-info.json"));
-        	for (Object key : file.keySet()) {
-                String keyStr = (String)key;
-                JSONObject currencyId = (JSONObject) file.get(keyStr);
+            JSONObject file = (JSONObject) parser.parse(new FileReader("money-info.json"));
+            for (Object key : file.keySet()) {
+            String keyStr = (String)key;
+            JSONObject currencyId = (JSONObject) file.get(keyStr);
                 
-                if (((String) currencyId.get("name")).equals(name)) {
-                	return ((String) keyStr);
-                }
+            if (((String) currencyId.get("name")).equals(name)) {
+              	return ((String) keyStr);
             }
-            return null;
+        }
+        return null;
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -70,8 +70,8 @@ public class CurrencyInfo {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-		return "Error";		
-	}
+	return "Error";		
+    }
     
 	
 	public static ArrayList<String> CurrencyList () {
@@ -97,6 +97,6 @@ public class CurrencyInfo {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-		return null;
-	}
+	return null;
+    }
 }
