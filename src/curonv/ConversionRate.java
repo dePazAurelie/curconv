@@ -12,7 +12,7 @@ public class ConversionRate {
     	JSONParser parser = new JSONParser();
     	
         try {
-        	JSONObject file = (JSONObject) parser.parse(new FileReader("live.json"));
+        JSONObject file = (JSONObject) parser.parse(new FileReader("live.json"));
             JSONObject quotes = (JSONObject) file.get("quotes");
 
             currencyOrigin.setConversionRateUSD(Double.parseDouble(quotes.get("USD" + currencyOrigin.getCurrencyCode()).toString()));
