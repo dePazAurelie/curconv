@@ -7,7 +7,6 @@ import org.json.simple.parser.ParseException;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.Set;
 
 public class ConversionRate {
 	
