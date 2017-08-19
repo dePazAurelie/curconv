@@ -3,10 +3,7 @@ package curonv;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-<<<<<<< HEAD
-=======
 import java.util.ArrayList;
->>>>>>> origin/beta
 
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
