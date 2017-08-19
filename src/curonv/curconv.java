@@ -1,8 +1,7 @@
 package curonv;
 
-public class curconv {
+public class curonv {
 	public static void main(String[] args) {
-		Converter currencyConverter = new Converter(150, "RUB", "EUR");
-		
+		Converter currencyConverter = new Converter();
 	}
 }
