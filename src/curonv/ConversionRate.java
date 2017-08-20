@@ -8,15 +8,16 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class ConversionRate {
-    public static void changeConversionRate (Currency currencyOrigin, Currency currencyTarget) {
+	
+	// Ne prends plus qu'un paramètre, est appelé dans le builder de Currency (plus efficace)
+    public static void changeConversionRate (Currency currency) {
     	JSONParser parser = new JSONParser();
     	
         try {
-        JSONObject file = (JSONObject) parser.parse(new FileReader("live.json"));
+        	JSONObject file = (JSONObject) parser.parse(new FileReader("live.json"));
             JSONObject quotes = (JSONObject) file.get("quotes");
-
-            currencyOrigin.setConversionRateUSD(Double.parseDouble(quotes.get("USD" + currencyOrigin.getCurrencyCode()).toString()));
-            currencyTarget.setConversionRateUSD(Double.parseDouble(quotes.get("USD" + currencyTarget.getCurrencyCode()).toString()));
+            
+            currency.setConversionRateUSD(Double.parseDouble(quotes.get("USD" + currency.getCurrencyCode()).toString()));
 
         } catch (FileNotFoundException e) {
         	e.printStackTrace();
