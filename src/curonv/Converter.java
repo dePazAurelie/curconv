@@ -7,7 +7,8 @@ import java.math.RoundingMode;
 /**
  * Classe qui gère la conversion d'une monnaie à une autre.
  * 
- * @author de Paz - Ronteix
+ * @author de Paz
+ * @author Ronteix
  */
 
 public class Converter {

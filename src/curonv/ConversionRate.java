@@ -15,10 +15,15 @@ import java.net.URLConnection;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
+
+/**
+* @author de Paz
+* @author Ronteix
+*/
 public class ConversionRate {
 	
 	// Ne prends plus qu'un paramètre, est appelé dans le builder de Currency (plus efficace)
-    public static void changeConversionRate (Currency currency) {
+	public static void changeConversionRate (Currency currency) {
     	JSONParser parser = new JSONParser();
     	
         try {
@@ -36,7 +41,9 @@ public class ConversionRate {
         }
     }
     
-    // Fonction se connectant à l'API distante et mettant à jours le JSON des rates. Est call une fois au lancement puis a chaque pression du bouton update.
+    /**
+     *  Fonction se connectant à l'API distante et mettant à jours le JSON des rates. Est call une fois au lancement puis a chaque pression du bouton update.
+     */
     public static void updateConversionRate () {
         JSONParser parser = new JSONParser();
 
@@ -69,7 +76,10 @@ public class ConversionRate {
         }   
     }
     
-    // Fonction qui affiche et renvois le timestamp dans une String
+    /**
+     * Fonction qui affiche et renvois le timestamp dans une String
+     * @return un String à afficher
+     */
 
     public static String updateConversionTimestamp () {
     	JSONParser parser = new JSONParser();

@@ -9,6 +9,12 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
+/**
+ * Ensemble de fonctions qui permettent d'extraire du fichier JSon les infos concernant les monnaies 
+ * 
+ * @author de Paz
+ * @author Ronteix
+ */
 public class CurrencyInfo {
     public static String CurrencyName (String arg) {
         JSONParser parser = new JSONParser();

@@ -2,8 +2,9 @@ package curonv;
 
 /**
  * Permet de créer des objets Currency
- * @author de Paz - Ronteix
- *
+ * 
+ * @author de Paz
+ * @author Ronteix
  */
 public class Currency {
     private String name;

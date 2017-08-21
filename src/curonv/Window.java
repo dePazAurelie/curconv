@@ -18,7 +18,7 @@ import java.awt.Color;
 import java.awt.Dimension;
 
 /**
- * D�finit les �l�ments de la fen�tre et les actions a effectuer dans certains cas.
+ * D�finit les éléments de la fenêtre et les actions a effectuer dans certains cas.
  * 
  * @author de Paz
  * @author Ronteix
@@ -29,7 +29,7 @@ public class Window extends JFrame {
 	private JTextField originValue;
 
 	/**
-	 * Builder de Window : ne prend pas de param�tre et initialise tous les �l�ments de la fen�tre.
+	 * Builder de Window : ne prend pas de param�tre et initialise tous les éléments de la fen�tre.
 	 */
 	public Window() {
 		
