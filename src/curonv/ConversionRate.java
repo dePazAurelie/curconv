@@ -12,6 +12,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 
 public class ConversionRate {
 	
@@ -34,6 +36,7 @@ public class ConversionRate {
         }
     }
     
+    // Fonction se connectant à l'API distante et mettant à jours le JSON des rates. Est call une fois au lancement puis a chaque pression du bouton update.
     public static void updateConversionRate () {
         JSONParser parser = new JSONParser();
 
@@ -48,12 +51,12 @@ public class ConversionRate {
             		str += buff;
             }
            in.close();
-            System.out.println(str);
             
             try (FileWriter file = new FileWriter("live.json")) {
 
                 file.write(str);
                 file.flush();
+                updateConversionTimestamp();
                 
             } catch (IOException e) {
                 e.printStackTrace();
@@ -64,5 +67,29 @@ public class ConversionRate {
     } catch (IOException e) {
         e.printStackTrace();
     }   
-}
+    }
+    
+    // Fonction qui affiche et renvois le 
+
+    public static String updateConversionTimestamp () {
+    	
+JSONParser parser = new JSONParser();
+    	
+        try {
+        	JSONObject file = (JSONObject) parser.parse(new FileReader("live.json"));
+        	
+            java.util.Date time = new java.util.Date((long)file.get("timestamp")*1000);
+            DateFormat f = new SimpleDateFormat("yyyy-MM-dd' 'HH:mm");
+            return f.format(time);
+
+        } catch (FileNotFoundException e) {
+        	e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+		return null;
+    
+    }
 }
