@@ -12,14 +12,13 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
-import javax.swing.border.LineBorder;
 
 import net.miginfocom.swing.MigLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 
 /**
- * Définit les éléments de la fenêtre et les actions a effectuer dans certains cas.
+ * Dï¿½finit les ï¿½lï¿½ments de la fenï¿½tre et les actions a effectuer dans certains cas.
  * 
  * @author de Paz
  * @author Ronteix
@@ -30,21 +29,21 @@ public class Window extends JFrame {
 	private JTextField originValue;
 
 	/**
-	 * Builder de Window : ne prend pas de paramètre et initialise tous les éléments de la fenêtre.
+	 * Builder de Window : ne prend pas de paramï¿½tre et initialise tous les ï¿½lï¿½ments de la fenï¿½tre.
 	 */
 	public Window() {
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1000, 450);							// Taille de la fenêtre
+		setBounds(100, 100, 1000, 450);							// Taille de la fenï¿½tre
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(15, 15, 15, 15));
 		setContentPane(contentPane);
 		contentPane.setLayout(new MigLayout("", "[100px][250px][100px][100px][250px][100px][100px]", "[][][100px][100px][100px][100px,grow][100px][][100px][]"));
-		// Taille des colonnes et des lignes contenant les éléments.
+		// Taille des colonnes et des lignes contenant les Ã©lÃ©ments.
 		
 		
 		/**
-		 * Textfield à l'utilisateur indique la valeur qu'il souhaite convertir
+		 * Textfield ï¿½ l'utilisateur indique la valeur qu'il souhaite convertir
 		 */		
 		originValue = new JTextField();
 		originValue.setFont(new Font("Calibri", Font.BOLD, 30));
@@ -87,7 +86,7 @@ public class Window extends JFrame {
 		contentPane.add(finalCurrency, "cell 5 3");
 		
 		/**
-		 * Affiche le caractère "="
+		 * Affiche le caractï¿½re "="
 		 */
 		JLabel converterEqual = new JLabel("=");
 		converterEqual.setHorizontalAlignment(SwingConstants.CENTER);
@@ -96,7 +95,7 @@ public class Window extends JFrame {
 		contentPane.add(converterEqual, "cell 3 3,grow");
 		
 		/**
-		 * Imprime le résultat de la conversion
+		 * Imprime le rï¿½sultat de la conversion
 		 */
 		JLabel converterResult = new JLabel("?");
 		converterResult.setForeground(new Color(199, 21, 133));
@@ -114,8 +113,8 @@ public class Window extends JFrame {
 		contentPane.add(messageAlert, "cell 0 9 7 1,alignx center,aligny center");
 		
 		/**
-		 * Combobox à l'utilisateur choisit la monnaie initiale.
-		 * Ajout d'un listener pour mettre à  jour l'affichage du JLabel initialCurrency en fonction de la monnaie sélectionnée
+		 * Combobox ï¿½ l'utilisateur choisit la monnaie initiale.
+		 * Ajout d'un listener pour mettre ï¿½ jour l'affichage du JLabel initialCurrency en fonction de la monnaie sï¿½lectionnï¿½e
 		 * 
 		 * @see CurrencyInfo.CurrencyList()
 		 */
@@ -127,18 +126,19 @@ public class Window extends JFrame {
 			comboOrigin.addItem(CurrencyInfo.CurrencyList().get(i));
 		}
 		
+		comboOrigin.setSelectedItem("Euro");
 		comboOrigin.addActionListener (new ActionListener () {
 		    @Override
 			public void actionPerformed(ActionEvent e) {
 		        initialCurrency.setText(CurrencyInfo.nameToCode((String) comboOrigin.getSelectedItem()));
 		    }
 		});
-		
 		contentPane.add(comboOrigin, "cell 0 5 3 1,grow");
+		initialCurrency.setText(CurrencyInfo.nameToCode((String) comboOrigin.getSelectedItem()));
 		
 		/**
-		 * Combobox à l'utilisateur choisit la monnaie finale.
-		 * Ajout d'un listener pour mettre à  jour l'affichage du JLabel finalCurrency en fonction de la monnaie sÃ©lectionnÃ©e
+		 * Combobox ï¿½ l'utilisateur choisit la monnaie finale.
+		 * Ajout d'un listener pour mettre ï¿½ jour l'affichage du JLabel finalCurrency en fonction de la monnaie sÃ©lectionnÃ©e
 		 * 
 		 * @see CurrencyInfo.CurrencyList()
 		 */
@@ -153,21 +153,22 @@ public class Window extends JFrame {
 			comboTarget.addItem(CurrencyInfo.CurrencyList().get(i));
 		}
 		
+		comboTarget.setSelectedItem("US Dollar");
 		comboTarget.addActionListener (new ActionListener () {
 		    @Override
 			public void actionPerformed(ActionEvent e) {
 		        finalCurrency.setText(CurrencyInfo.nameToCode((String) comboTarget.getSelectedItem()));
 		    }
-		});
-		
+		});		
 		contentPane.add(comboTarget, "cell 4 5 3 1,grow");
+		finalCurrency.setText(CurrencyInfo.nameToCode((String) comboTarget.getSelectedItem()));
 		
 		/**
 		 * Bouton Convert ! Ajout d'un listener
-		 * 1. Test : les deux monnaie ont-elles été choisie ? si non, message d'erreur dans le JLabel messageAlert
-		 * 2. Création de deux objets Currency avec les attributs des monnaies choisies + la valeur entrée la l'utilisateur pour l'un d'entre eux
+		 * 1. Test : les deux monnaie ont-elles ï¿½tï¿½ choisie ? si non, message d'erreur dans le JLabel messageAlert
+		 * 2. Crï¿½ation de deux objets Currency avec les attributs des monnaies choisies + la valeur entrï¿½e la l'utilisateur pour l'un d'entre eux
 		 * 3. Converter.conversion avec les deux objets.
-		 * 4. On affiche le résultats.
+		 * 4. On affiche le rï¿½sultats.
 		 * 
 		 * @see Converter.conversion()
 		 * @see Currency
@@ -176,19 +177,14 @@ public class Window extends JFrame {
 		convertButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if (!(initialCurrency.getText().equals("Currency") || finalCurrency.getText().equals("Currency"))) {
 					Currency originCurrency = new Currency(initialCurrency.getText(), originValue.getText());
 					Currency targetCurrency = new Currency(finalCurrency.getText(), "?");
 					Converter.conversion(originCurrency, targetCurrency);
 					
-					// Affichage résultats
+					// Affichage rï¿½sultats
 					originValue.setText(originCurrency.getStrValue());
 					converterResult.setText(targetCurrency.getStrValue());
 					messageAlert.setText(targetCurrency.getStrAlertValue());
-					
-				} else {
-					messageAlert.setText("Please, select two currencies !");
-				}
 			}
 		});
 		convertButton.setFont(new Font("Calibri", Font.BOLD, 35));
@@ -198,6 +194,7 @@ public class Window extends JFrame {
 		JButton buttonRefresh = new JButton("Refresh conversion rate");
 		buttonRefresh.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				ConversionRate.updateConversionRate();
 			}
 		});
 		buttonRefresh.setFont(new Font("Calibri", Font.BOLD, 30));

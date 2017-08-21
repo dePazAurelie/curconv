@@ -94,7 +94,8 @@ public class Converter {
      * Builer de Converter : Lance la fenêtre window pour interagir avec l'utilisateur.
      * Ne prend pas de paramètre.
      */
-    public Converter() {      
+    public Converter() {
+    	ConversionRate.updateConversionRate();
         EventQueue.invokeLater(new Runnable() {
 			@Override
 			public void run() {
@@ -105,7 +106,6 @@ public class Converter {
 					e.printStackTrace();
 				}
 			}
-		});
-        
+		});        
     }
 }
