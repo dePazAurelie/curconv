@@ -15,11 +15,13 @@ import javax.swing.border.EmptyBorder;
 
 import net.miginfocom.swing.MigLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 
 /**
- * Définit les éléments de la fenêtre et les actions a effectuer dans certains cas.
+ * D�finit les éléments de la fenêtre et les actions a effectuer dans certains cas.
  * 
- * @author de Paz - Ronteix
+ * @author de Paz
+ * @author Ronteix
  */
 
 public class Window extends JFrame {	
@@ -27,12 +29,12 @@ public class Window extends JFrame {
 	private JTextField originValue;
 
 	/**
-	 * Builder de Window : ne prend pas de paramètre et initialise tous les éléments de la fenêtre.
+	 * Builder de Window : ne prend pas de param�tre et initialise tous les éléments de la fen�tre.
 	 */
 	public Window() {
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 1000, 450);							// Taille de la fenêtre
+		setBounds(100, 100, 1000, 450);							// Taille de la fen�tre
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(15, 15, 15, 15));
 		setContentPane(contentPane);
@@ -41,12 +43,13 @@ public class Window extends JFrame {
 		
 		
 		/**
-		 * Textfield où l'utilisateur indique la valeur qu'il souhaite convertir
-		 */
+		 * Textfield � l'utilisateur indique la valeur qu'il souhaite convertir
+		 */		
 		originValue = new JTextField();
-		originValue.setHorizontalAlignment(SwingConstants.CENTER);
 		originValue.setFont(new Font("Calibri", Font.BOLD, 30));
-		originValue.setText("?");
+		originValue.setMinimumSize(new Dimension(300, 50));
+		originValue.setHorizontalAlignment(SwingConstants.CENTER);
+		originValue.setText("1");
 		contentPane.add(originValue, "cell 1 3,grow");
 		originValue.setColumns(10);
 		
@@ -79,25 +82,26 @@ public class Window extends JFrame {
 		JLabel finalCurrency = new JLabel("Currency");
 		finalCurrency.setForeground(new Color(199, 21, 133));
 		finalCurrency.setFont(new Font("Calibri", Font.BOLD, 25));
-		contentPane.add(finalCurrency, "cell 5 3,alignx center,aligny center");
+		contentPane.add(finalCurrency, "cell 5 3");
 		
 		/**
-		 * Affiche le caractère "="
+		 * Affiche le caract�re "="
 		 */
 		JLabel converterEqual = new JLabel("=");
 		converterEqual.setHorizontalAlignment(SwingConstants.CENTER);
+		converterEqual.setBorder(new EmptyBorder(0, 30, 0, 30));
 		converterEqual.setFont(new Font("Calibri", Font.PLAIN, 25));
 		contentPane.add(converterEqual, "cell 3 3,grow");
 		
 		/**
-		 * Imprime le résultat de la conversion
+		 * Imprime le r�sultat de la conversion
 		 */
 		JLabel converterResult = new JLabel("?");
 		converterResult.setForeground(new Color(199, 21, 133));
-		converterResult.setBackground(Color.WHITE);
-		converterResult.setHorizontalAlignment(SwingConstants.CENTER);
+		converterResult.setMinimumSize(new Dimension(300, 50));
 		converterResult.setFont(new Font("Calibri", Font.BOLD, 30));
-		contentPane.add(converterResult, "cell 4 3,grow");
+		converterResult.setHorizontalAlignment(SwingConstants.CENTER);
+		contentPane.add(converterResult, "cell 4 3,grow,alignx center,aligny center");
 		
 		/**
 		 * Imprime les messages d'erreur
@@ -108,8 +112,8 @@ public class Window extends JFrame {
 		contentPane.add(messageAlert, "cell 0 9 7 1,alignx center,aligny center");
 		
 		/**
-		 * Combobox où l'utilisateur choisit la monnaie initiale.
-		 * Ajout d'un listener pour mettre à jour l'affichage du JLabel initialCurrency en fonction de la monnaie sélectionnée
+		 * Combobox � l'utilisateur choisit la monnaie initiale.
+		 * Ajout d'un listener pour mettre � jour l'affichage du JLabel initialCurrency en fonction de la monnaie s�lectionn�e
 		 * 
 		 * @see CurrencyInfo.CurrencyList()
 		 */
@@ -121,18 +125,19 @@ public class Window extends JFrame {
 			comboOrigin.addItem(CurrencyInfo.CurrencyList().get(i));
 		}
 		
+		comboOrigin.setSelectedItem("Euro");
 		comboOrigin.addActionListener (new ActionListener () {
 		    @Override
 			public void actionPerformed(ActionEvent e) {
 		        initialCurrency.setText(CurrencyInfo.nameToCode((String) comboOrigin.getSelectedItem()));
 		    }
 		});
-		
 		contentPane.add(comboOrigin, "cell 0 5 3 1,grow");
+		initialCurrency.setText(CurrencyInfo.nameToCode((String) comboOrigin.getSelectedItem()));
 		
 		/**
-		 * Combobox où l'utilisateur choisit la monnaie finale.
-		 * Ajout d'un listener pour mettre à jour l'affichage du JLabel finalCurrency en fonction de la monnaie sélectionnée
+		 * Combobox � l'utilisateur choisit la monnaie finale.
+		 * Ajout d'un listener pour mettre � jour l'affichage du JLabel finalCurrency en fonction de la monnaie sélectionnée
 		 * 
 		 * @see CurrencyInfo.CurrencyList()
 		 */
@@ -147,21 +152,22 @@ public class Window extends JFrame {
 			comboTarget.addItem(CurrencyInfo.CurrencyList().get(i));
 		}
 		
+		comboTarget.setSelectedItem("US Dollar");
 		comboTarget.addActionListener (new ActionListener () {
 		    @Override
 			public void actionPerformed(ActionEvent e) {
 		        finalCurrency.setText(CurrencyInfo.nameToCode((String) comboTarget.getSelectedItem()));
 		    }
-		});
-		
+		});		
 		contentPane.add(comboTarget, "cell 4 5 3 1,grow");
+		finalCurrency.setText(CurrencyInfo.nameToCode((String) comboTarget.getSelectedItem()));
 		
 		/**
 		 * Bouton Convert ! Ajout d'un listener
-		 * 1. Test : les deux monnaie ont-elles été choisie ? si non, message d'erreur dans le JLabel messageAlert
-		 * 2. Création de deux objets Currency avec les attributs des monnaies choisies + la valeur entrée la l'utilisateur pour l'un d'entre eux
+		 * 1. Test : les deux monnaie ont-elles �t� choisie ? si non, message d'erreur dans le JLabel messageAlert
+		 * 2. Cr�ation de deux objets Currency avec les attributs des monnaies choisies + la valeur entr�e la l'utilisateur pour l'un d'entre eux
 		 * 3. Converter.conversion avec les deux objets.
-		 * 4. On affiche le résultats.
+		 * 4. On affiche le r�sultats.
 		 * 
 		 * @see Converter.conversion()
 		 * @see Currency
@@ -170,23 +176,32 @@ public class Window extends JFrame {
 		convertButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if (!(initialCurrency.getText().equals("Currency") || finalCurrency.getText().equals("Currency"))) {
 					Currency originCurrency = new Currency(initialCurrency.getText(), originValue.getText());
 					Currency targetCurrency = new Currency(finalCurrency.getText(), "?");
 					Converter.conversion(originCurrency, targetCurrency);
 					
-					// Affichage résultats
+					// Affichage r�sultats
 					originValue.setText(originCurrency.getStrValue());
 					converterResult.setText(targetCurrency.getStrValue());
+					messageAlert.setFont(new Font("Calibri", Font.BOLD, 27));
+					messageAlert.setForeground(new Color(255, 0, 0));
 					messageAlert.setText(targetCurrency.getStrAlertValue());
-					
-				} else {
-					messageAlert.setText("Please, select two currencies !");
-				}
 			}
 		});
-		
 		convertButton.setFont(new Font("Calibri", Font.BOLD, 35));
-		contentPane.add(convertButton, "cell 0 7 7 1,alignx center,aligny center");
+		contentPane.add(convertButton, "cell 0 7 3 1,alignx center,aligny center");
+		
+		
+		JButton buttonRefresh = new JButton("Refresh conversion rate");
+		buttonRefresh.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ConversionRate.updateConversionRate();
+				messageAlert.setFont(new Font("Calibri", Font.PLAIN, 20));
+				messageAlert.setForeground(new Color(0, 0, 0));
+				messageAlert.setText("Conversion Rates from : " + ConversionRate.updateConversionTimestamp());
+			}
+		});
+		buttonRefresh.setFont(new Font("Calibri", Font.BOLD, 30));
+		contentPane.add(buttonRefresh, "cell 4 7 2 1,alignx center,aligny center");
 	}	
 }

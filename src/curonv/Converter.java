@@ -7,7 +7,8 @@ import java.math.RoundingMode;
 /**
  * Classe qui gère la conversion d'une monnaie à une autre.
  * 
- * @author de Paz - Ronteix
+ * @author de Paz
+ * @author Ronteix
  */
 
 public class Converter {
@@ -94,7 +95,8 @@ public class Converter {
      * Builer de Converter : Lance la fenêtre window pour interagir avec l'utilisateur.
      * Ne prend pas de paramètre.
      */
-    public Converter() {      
+    public Converter() {
+    	ConversionRate.updateConversionRate();
         EventQueue.invokeLater(new Runnable() {
 			@Override
 			public void run() {
@@ -105,7 +107,6 @@ public class Converter {
 					e.printStackTrace();
 				}
 			}
-		});
-        
+		});        
     }
 }
