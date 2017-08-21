@@ -198,7 +198,7 @@ public class Window extends JFrame {
 				ConversionRate.updateConversionRate();
 				messageAlert.setFont(new Font("Calibri", Font.PLAIN, 20));
 				messageAlert.setForeground(new Color(0, 0, 0));
-				messageAlert.setText(ConversionRate.updateConversionTimestamp());
+				messageAlert.setText("Conversion Rates from : " + ConversionRate.updateConversionTimestamp());
 			}
 		});
 		buttonRefresh.setFont(new Font("Calibri", Font.BOLD, 30));
