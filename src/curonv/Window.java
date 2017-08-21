@@ -49,7 +49,7 @@ public class Window extends JFrame {
 		originValue.setFont(new Font("Calibri", Font.BOLD, 30));
 		originValue.setMinimumSize(new Dimension(300, 50));
 		originValue.setHorizontalAlignment(SwingConstants.CENTER);
-		originValue.setText("?");
+		originValue.setText("1");
 		contentPane.add(originValue, "cell 1 3,grow");
 		originValue.setColumns(10);
 		
