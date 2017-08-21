@@ -53,7 +53,6 @@ public class Window extends JFrame {
 		contentPane.add(originValue, "cell 1 3,grow");
 		originValue.setColumns(10);
 		
-		
 		/**
 		 * Titre
 		 */
@@ -184,6 +183,8 @@ public class Window extends JFrame {
 					// Affichage r�sultats
 					originValue.setText(originCurrency.getStrValue());
 					converterResult.setText(targetCurrency.getStrValue());
+					messageAlert.setFont(new Font("Calibri", Font.BOLD, 27));
+					messageAlert.setForeground(new Color(255, 0, 0));
 					messageAlert.setText(targetCurrency.getStrAlertValue());
 			}
 		});
@@ -195,6 +196,9 @@ public class Window extends JFrame {
 		buttonRefresh.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ConversionRate.updateConversionRate();
+				messageAlert.setFont(new Font("Calibri", Font.PLAIN, 20));
+				messageAlert.setForeground(new Color(0, 0, 0));
+				messageAlert.setText(ConversionRate.updateConversionTimestamp());
 			}
 		});
 		buttonRefresh.setFont(new Font("Calibri", Font.BOLD, 30));

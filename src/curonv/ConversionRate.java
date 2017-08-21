@@ -62,18 +62,17 @@ public class ConversionRate {
                 e.printStackTrace();
             }
             
-    } catch (FileNotFoundException e) {
-        e.printStackTrace();
-    } catch (IOException e) {
-        e.printStackTrace();
-    }   
+        } catch (FileNotFoundException e) {
+        	e.printStackTrace();
+        } catch (IOException e) {
+        	e.printStackTrace();
+        }   
     }
     
-    // Fonction qui affiche et renvois le 
+    // Fonction qui affiche et renvois le timestamp dans une String
 
     public static String updateConversionTimestamp () {
-    	
-JSONParser parser = new JSONParser();
+    	JSONParser parser = new JSONParser();
     	
         try {
         	JSONObject file = (JSONObject) parser.parse(new FileReader("live.json"));
@@ -90,6 +89,5 @@ JSONParser parser = new JSONParser();
             e.printStackTrace();
         }
 		return null;
-    
     }
 }
