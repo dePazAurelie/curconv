@@ -59,7 +59,8 @@ public class ConversionRate {
             }
            in.close();
             
-            try (FileWriter file = new FileWriter("live.json")) {
+            try {
+                FileWriter file = new FileWriter("live.json");
 
                 file.write(str);
                 file.flush();
