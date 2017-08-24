@@ -1,7 +1,4 @@
 language: java
 
-before_install:
-- mvn test -B
-
 notifications:
     slack: capgeminicodingac:Y4nZAU7lZiaMnvxO7pUptR06
